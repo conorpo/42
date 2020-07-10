@@ -7,5 +7,5 @@ mongoose.connect(`mongodb+srv://42_user:${process.env.db_pass}@main.wg2b2.mongod
 
 app = require('./app.js');
 
-const port = process.env.port || 4999;
-app.listen(port, () => console.log(`Example app listening on port ${port}`));
+const port = process.env.PORT || 4999;
+app.listen(port, () => console.log(`Server listening on port ${port}`));
