@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const verify = require('./util/verify.js');
 const orderHandler = require('./handlers/orders.js');
+const sheetsHandler = require('./handlers/sheets.js')
 
 //So that we can soo the log.txt file
 app.use(express.static('public'));
@@ -31,5 +32,7 @@ app.post('*',(req,res, next) => {
 
 //Handles orders
 app.post('/api/order', orderHandler); //founds in handlers/order.js
+
+app.post('*', sheetsHandler);
 
 module.exports = app;

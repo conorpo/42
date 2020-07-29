@@ -5,6 +5,7 @@ const OrderSchema = mongoose.Schema({
     email: String,
     subtotal_price: mongoose.Decimal128,
     shipping_price: mongoose.Decimal128,
+    total_discount: mongoose.Decimal128,
     created_at: Date,
     updated_at: Date,
     closed_at: Date,
@@ -19,7 +20,9 @@ const OrderSchema = mongoose.Schema({
     province: String,
     customer_id: String,
     _id: Number,
+    shipping_type: String, // New Item
+    shipping_id: Number, //New Item
     line_items: [ItemSchema]
-})
+});
 
 module.exports = mongoose.model('Orders', OrderSchema)

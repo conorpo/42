@@ -1,10 +1,10 @@
-const mongoose = require('mongoose');
 const OrderModel = require('../models/Order.js');
 const fs = require('fs');
 
-const orderHandler = (req, res) => {
+const orderHandler = (req, res, next) => {
     const body = req.body.order || req.body;
     const topic = req.header('x-shopify-topic');
+    req.webhookType="update";
     if(topic === 'orders/create'){
 
         //Creates a new order
@@ -24,6 +24,7 @@ const orderHandler = (req, res) => {
             email: body.email,
             subtotal_price: body.subtotal_price,
             shipping_price: body.total_shipping_price_set.shop_money.amount,
+            total_discount: body.total_discounts, 
             f_name: body.shipping_address.first_name,
             l_name: body.shipping_address.last_name,
             address: body.shipping_address.address1,
@@ -33,15 +34,20 @@ const orderHandler = (req, res) => {
             zip: body.shipping_address.zip,
             phone: body.shipping_address.phone,
             customer_id: String(body.customer.id),
-            created_at: Date(body.created_at),
-            updated_at: Date(body.updated_at),
+            created_at: new Date(body.created_at),
+            updated_at: new Date(body.updated_at),
             closed_at: null,
             cancelled_at: null,
+            shipping_type: body.shipping_lines[0].title,
+            shipping_id: body.shipping_lines[0].id,
             line_items: items
         });
         order.save().then(doc => {
             console.log(`Order ${doc._id} created.`);
+            req.order = doc;
+            req.webhookType = "new";
             res.status(200).send(doc);
+            next();
         }).catch(err => {
             res.status(400).send(err);
             return fs.appendFile('./public/log.txt',`\n${(new Date())} --- ${err}\n`, () => {}) //logs out errors at site/log.txt
@@ -57,7 +63,7 @@ const orderHandler = (req, res) => {
                     title: item.title,
                     variant_title: item.variant_title,
                     basePrice:  item.price,
-                    discount: item.total_discount,
+                    discount: parseFloat(item.total_discount)+parseFloat(item.discount_allocations[0].amount),
                     quantity: item.quantity
                 })
             });
@@ -66,6 +72,7 @@ const orderHandler = (req, res) => {
                 email: body.email,
                 subtotal_price: body.subtotal_price,
                 shipping_price: body.total_shipping_price_set.shop_money.amount,
+                total_discount: body.total_discounts, 
                 f_name: body.shipping_address.first_name,
                 l_name: body.shipping_address.last_name,
                 address: body.shipping_address.address1,
@@ -75,16 +82,18 @@ const orderHandler = (req, res) => {
                 zip: body.shipping_address.zip,
                 phone: body.shipping_address.phone,
                 customer_id: String(body.customer.id),
-                created_at: Date(body.created_at),
-                updated_at: Date(body.updated_at),
-                closed_at: null,
-                cancelled_at: null,
+                created_at: new Date(body.created_at),
+                updated_at: new Date(body.updated_at),
+                closed_at: (body.closed_at) ? new Date(body.closed_at) : null,
+                cancelled_at: (body.cancelled_at) ? new Date(body.cancelled_at) : null,
                 line_items: items
             });
             return doc.save();
         }).then(doc => {
             console.log(`Order ${doc._id} updated.`);
+            req.order = doc;
             res.status(200).send(doc);
+            next();
         }).catch(err => {
             res.status(400).send(err);
             return fs.appendFile('./public/log.txt',`\n${(new Date())} --- ${err}\n`, () => {}) //logs out errors at site/log.txt
@@ -100,7 +109,9 @@ const orderHandler = (req, res) => {
             return doc.save();
         }).then(doc => {
             console.log(`Order ${doc._id} ${topic.slice(7)}.`);
+            req.order = doc;
             res.status(200).send(doc);
+            next();
         }).catch(err => {
             res.status(400).send(err);
             return fs.appendFile('./public/log.txt',`\n${(new Date())} --- ${err}\n`, () => {}) //logs out errors at site/log.txt
@@ -108,10 +119,12 @@ const orderHandler = (req, res) => {
     } else if(topic === 'orders/delete'){
 
         //Deletes a doc
-
         OrderModel.findOneAndDelete({_id: body.id}).then(doc => {
             console.log(`Order ${doc._id} deleted.`);
+            req.order = doc;
+            req.webhookType = "delete";
             res.status(200).send(doc);
+            next();
         }).catch(err => {
             res.status(400).send(err);
             return fs.appendFile('./public/log.txt',`\n${(new Date())} --- ${err}\n`, () => {}) //logs out errors at site/log.txt
