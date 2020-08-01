@@ -1,2 +1,68 @@
 
 Tue Jul 28 2020 17:33:50 GMT-0400 (Eastern Daylight Time) --- Sheet handler did not have order object
+
+Wed Jul 29 2020 14:28:50 GMT-0400 (Eastern Daylight Time) --- TypeError: Cannot read property 'amount' of undefined
+
+Wed Jul 29 2020 14:32:58 GMT-0400 (Eastern Daylight Time) --- TypeError: Cannot read property 'then' of undefined
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2274596519984.0 }
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2272878067760.0 }
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2274577711152.0 }
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2274813018160.0 }
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2274542911536.0 }
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2273627144240.0 }
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2274527543344.0 }
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2273702674480.0 }
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2273504788528.0 }
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2273139949616.0 }
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2272787988528.0 }
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2271017369648.0 }
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2272256032816.0 }
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2270963564592.0 }
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2270915362864.0 }
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2270971002928.0 }
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2270787239984.0 }
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2270844223536.0 }
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2268387016752.0 }
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2269969449008.0 }
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2268830924848.0 }
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2268393635888.0 }
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2266707591216.0 }
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2267762819120.0 }
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2266633175088.0 }
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2265579585584.0 }
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2264599527472.0 }
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2264106303536.0 }
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2262556868656.0 }
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2258377572400.0 }
+
+Wed Jul 29 2020 14:33:53 GMT-0400 (Eastern Daylight Time) --- MongoError: E11000 duplicate key error collection: main.orders index: _id_ dup key: { _id: 2258194202672.0 }

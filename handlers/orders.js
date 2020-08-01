@@ -11,11 +11,14 @@ const orderHandler = (req, res, next) => {
 
         const items = [];
         body.line_items.forEach(item => {
+            if(item.discount_allocations.length == 0){
+                item.discount_allocations.push({amount: '0'});
+            }
             items.push({
                 title: item.title,
                 variant_title: item.variant_title,
                 basePrice:  item.price,
-                discount: item.total_discount,
+                discount: parseFloat(item.total_discount)+parseFloat(item.discount_allocations[0].amount),
                 quantity: item.quantity
             })
         });
@@ -59,6 +62,9 @@ const orderHandler = (req, res, next) => {
         OrderModel.findById(body.id).then(doc => {
             const items = [];
             body.line_items.forEach(item => {
+                if(item.discount_allocations.length == 0){
+                    item.discount_allocations.push({amount: '0'});
+                }
                 items.push({
                     title: item.title,
                     variant_title: item.variant_title,
